@@ -19,7 +19,8 @@ import {
 } from "react-router-dom";
 
 const SearchPage = () => {
-  const [search, setSearch] = useState("");
+  const params = useParams();
+  const [search, setSearch] = useState(params.search ?? "");
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -64,6 +65,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/search/:search",
+    // loader: async ({ params }) => {
+
+    // },
     element: <ResultsPage />,
   },
 ]);
